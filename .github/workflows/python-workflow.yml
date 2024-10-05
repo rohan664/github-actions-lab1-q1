@@ -2,8 +2,15 @@ name: CI
 
 on:
   push:
-  workflow_dispatch:   
-
+  workflow_dispatch: 
+    inputs:
+      progressStatus:
+        description: 'this is defined how workflow will run'
+        required: true
+        type: boolean  
+concurrency: 
+  group: development env
+  cancel-in-progress:  ${{ github.event.inputs.progressStatus }}
 jobs:
   build:
     runs-on: ubuntu-latest
