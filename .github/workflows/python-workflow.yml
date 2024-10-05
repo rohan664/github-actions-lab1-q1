@@ -30,5 +30,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          sleep 600s
           echo "tetetete : ${{inputs.progressStatus}}"
+          sleep 600s
+          
