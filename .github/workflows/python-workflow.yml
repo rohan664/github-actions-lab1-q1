@@ -11,7 +11,7 @@ on:
 
 concurrency: 
   group: development-env
-  cancel-in-progress: ${{ github.event.inputs.progressStatus }}
+  cancel-in-progress: true
 
 jobs:
   build:
