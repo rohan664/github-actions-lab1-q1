@@ -11,7 +11,7 @@ on:
 
 concurrency: 
   group: development-env
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
