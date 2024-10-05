@@ -1,28 +1,32 @@
 name: CI
+
 on:
   push:
   workflow_dispatch: 
     inputs:
       progressStatus:
-        description: 'this is defined how workflow will run'
+        description: 'This defines how the workflow will run'
         required: true
         type: boolean  
+
 concurrency: 
-  group: development env
-  cancel-in-progress: ${{ inputs.progressStatus }}
+  group: development-env
+  cancel-in-progress: ${{ github.event.inputs.progressStatus }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout branch
-      uses: actions/checkout@v4
-      with:
-        ref: main
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
